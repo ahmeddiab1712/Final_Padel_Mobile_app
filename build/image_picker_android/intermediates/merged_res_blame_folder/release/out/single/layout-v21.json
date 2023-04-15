@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\Flutter\\second_project\\build\\image_picker_android\\intermediates\\merged_res\\release\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\Ahmed\\.gradle\\caches\\transforms-3\\adb9a9036d6ae99679401f23808659ae\\transformed\\core-1.9.0\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "D:\\Flutter\\second_project\\build\\image_picker_android\\intermediates\\merged_res\\release\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Ahmed\\.gradle\\caches\\transforms-3\\adb9a9036d6ae99679401f23808659ae\\transformed\\core-1.9.0\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "D:\\Flutter\\second_project\\build\\image_picker_android\\intermediates\\merged_res\\release\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\Ahmed\\.gradle\\caches\\transforms-3\\adb9a9036d6ae99679401f23808659ae\\transformed\\core-1.9.0\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "D:\\Flutter\\second_project\\build\\image_picker_android\\intermediates\\merged_res\\release\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Ahmed\\.gradle\\caches\\transforms-3\\adb9a9036d6ae99679401f23808659ae\\transformed\\core-1.9.0\\res\\layout-v21\\notification_template_icon_group.xml"
+    }
+]

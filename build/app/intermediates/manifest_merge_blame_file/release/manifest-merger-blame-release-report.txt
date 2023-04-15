@@ -1,0 +1,139 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.second_project"
+4    android:versionCode="9"
+5    android:versionName="9.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:3:2-64
+11-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:3:19-61
+12    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+12-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:4:2-78
+12-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:4:19-75
+13    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+13-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:5:2-77
+13-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:5:19-74
+14    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+14-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:6:2-74
+14-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:6:19-71
+15
+16    <permission
+16-->[androidx.core:core:1.9.0] C:\Users\Ahmed\.gradle\caches\transforms-3\adb9a9036d6ae99679401f23808659ae\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+17        android:name="com.example.second_project.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+17-->[androidx.core:core:1.9.0] C:\Users\Ahmed\.gradle\caches\transforms-3\adb9a9036d6ae99679401f23808659ae\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+18        android:protectionLevel="signature" />
+18-->[androidx.core:core:1.9.0] C:\Users\Ahmed\.gradle\caches\transforms-3\adb9a9036d6ae99679401f23808659ae\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+19
+20    <uses-permission android:name="com.example.second_project.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+20-->[androidx.core:core:1.9.0] C:\Users\Ahmed\.gradle\caches\transforms-3\adb9a9036d6ae99679401f23808659ae\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+20-->[androidx.core:core:1.9.0] C:\Users\Ahmed\.gradle\caches\transforms-3\adb9a9036d6ae99679401f23808659ae\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+21
+22    <application
+23        android:name="android.app.Application"
+23-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:9:9-42
+24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+24-->[androidx.core:core:1.9.0] C:\Users\Ahmed\.gradle\caches\transforms-3\adb9a9036d6ae99679401f23808659ae\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+25        android:icon="@mipmap/ic_launcher"
+25-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:10:9-43
+26        android:label="second_project" >
+26-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:8:9-39
+27        <activity
+27-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:11:9-31:20
+28            android:name="com.example.second_project.MainActivity"
+28-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:12:13-41
+29            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+29-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:16:13-163
+30            android:exported="true"
+30-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:13:13-36
+31            android:hardwareAccelerated="true"
+31-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:17:13-47
+32            android:launchMode="singleTop"
+32-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:14:13-43
+33            android:theme="@style/LaunchTheme"
+33-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:15:13-47
+34            android:windowSoftInputMode="adjustResize" >
+34-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:18:13-55
+35
+36            <!--
+37                 Specifies an Android theme to apply to this Activity as soon as
+38                 the Android process has started. This theme is visible to the user
+39                 while the Flutter UI initializes. After that, this theme continues
+40                 to determine the Window background behind the Flutter UI.
+41            -->
+42            <meta-data
+42-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:23:13-26:17
+43                android:name="io.flutter.embedding.android.NormalTheme"
+43-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:24:15-70
+44                android:resource="@style/NormalTheme" />
+44-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:25:15-52
+45
+46            <intent-filter>
+46-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:27:13-30:29
+47                <action android:name="android.intent.action.MAIN" />
+47-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:28:17-68
+47-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:28:25-66
+48
+49                <category android:name="android.intent.category.LAUNCHER" />
+49-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:29:17-76
+49-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:29:27-74
+50            </intent-filter>
+51        </activity>
+52        <!--
+53             Don't delete the meta-data below.
+54             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+55        -->
+56        <meta-data
+56-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:34:9-36:33
+57            android:name="flutterEmbedding"
+57-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:35:13-44
+58            android:value="2" />
+58-->D:\Flutter\second_project\android\app\src\main\AndroidManifest.xml:36:13-30
+59
+60        <provider
+60-->[:image_picker_android] D:\Flutter\second_project\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:10:9-18:20
+61            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+61-->[:image_picker_android] D:\Flutter\second_project\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-82
+62            android:authorities="com.example.second_project.flutter.image_provider"
+62-->[:image_picker_android] D:\Flutter\second_project\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:12:13-74
+63            android:exported="false"
+63-->[:image_picker_android] D:\Flutter\second_project\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:13:13-37
+64            android:grantUriPermissions="true" >
+64-->[:image_picker_android] D:\Flutter\second_project\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:14:13-47
+65            <meta-data
+65-->[:image_picker_android] D:\Flutter\second_project\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:15:13-17:75
+66                android:name="android.support.FILE_PROVIDER_PATHS"
+66-->[:image_picker_android] D:\Flutter\second_project\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:16:17-67
+67                android:resource="@xml/flutter_image_picker_file_paths" />
+67-->[:image_picker_android] D:\Flutter\second_project\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:17:17-72
+68        </provider>
+69
+70        <activity
+70-->[:url_launcher_android] D:\Flutter\second_project\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:10:9-13:74
+71            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+71-->[:url_launcher_android] D:\Flutter\second_project\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-74
+72            android:exported="false"
+72-->[:url_launcher_android] D:\Flutter\second_project\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:12:13-37
+73            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+73-->[:url_launcher_android] D:\Flutter\second_project\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:13:13-71
+74
+75        <uses-library
+75-->[androidx.window:window:1.0.0-beta04] C:\Users\Ahmed\.gradle\caches\transforms-3\91bc9050bffdcc6f6702ad38aab7a6dc\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+76            android:name="androidx.window.extensions"
+76-->[androidx.window:window:1.0.0-beta04] C:\Users\Ahmed\.gradle\caches\transforms-3\91bc9050bffdcc6f6702ad38aab7a6dc\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+77            android:required="false" />
+77-->[androidx.window:window:1.0.0-beta04] C:\Users\Ahmed\.gradle\caches\transforms-3\91bc9050bffdcc6f6702ad38aab7a6dc\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+78        <uses-library
+78-->[androidx.window:window:1.0.0-beta04] C:\Users\Ahmed\.gradle\caches\transforms-3\91bc9050bffdcc6f6702ad38aab7a6dc\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+79            android:name="androidx.window.sidecar"
+79-->[androidx.window:window:1.0.0-beta04] C:\Users\Ahmed\.gradle\caches\transforms-3\91bc9050bffdcc6f6702ad38aab7a6dc\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+80            android:required="false" />
+80-->[androidx.window:window:1.0.0-beta04] C:\Users\Ahmed\.gradle\caches\transforms-3\91bc9050bffdcc6f6702ad38aab7a6dc\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+81    </application>
+82
+83</manifest>
