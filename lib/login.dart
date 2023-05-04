@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'db.dart';
 import 'function.dart';
 
 class LoginPage extends StatelessWidget {
@@ -20,7 +20,13 @@ class LoginBody extends StatefulWidget {
 }
 
 class _LoginBodyState extends State<LoginBody> {
+  void initState() {
+    super.initState();
+    auto_loginn();
+  }
+
   bool _isLoading = false;
+
   @override
   var email = TextEditingController();
   var mobile = TextEditingController();
@@ -61,9 +67,6 @@ class _LoginBodyState extends State<LoginBody> {
                       borderRadius: BorderRadius.circular(12)),
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
               Text(
                 'Hello Again!',
                 style: TextStyle(fontFamily: 'Dongle', fontSize: 60),
@@ -71,9 +74,6 @@ class _LoginBodyState extends State<LoginBody> {
               Text(
                 "Welcome back, you\'ve been missed",
                 style: TextStyle(fontSize: 30, fontFamily: 'Dongle'),
-              ),
-              SizedBox(
-                height: 20,
               ),
               SizedBox(
                 height: 10,
@@ -150,6 +150,12 @@ class _LoginBodyState extends State<LoginBody> {
           )),
         ));
   }
+
+  void auto_loginn() async {
+    DatabaseHelper db = DatabaseHelper();
+
+    await db.auto_login(context);
+  }
 }
 
 void showErrorDialog(BuildContext context, String errorMessage) {
@@ -170,3 +176,10 @@ void showErrorDialog(BuildContext context, String errorMessage) {
     },
   );
 }
+
+/* bool check_user() async {
+  DatabaseHelper db = DatabaseHelper();
+  db.queryAll();
+
+  return false;
+} */

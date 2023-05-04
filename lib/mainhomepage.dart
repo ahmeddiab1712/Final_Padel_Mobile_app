@@ -23,6 +23,69 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 String branch_name = '';
+String mobile = '';
+List<dynamic> response_message = [];
+
+int notification_count = 0;
+
+Future<List> get_notification_count() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  mobile = prefs.getString('mobile').toString();
+
+  String url = 'http://35.223.125.10:4002/get_notifications';
+
+  var requestBody = json.encode({
+    'mobile': mobile,
+  });
+  if (mobile != '') {
+    //final client = http.Client();
+    int retries = 3;
+    int delayInSeconds = 3;
+    notification_count = 0;
+    while (retries > 0) {
+      print("inside loop");
+      try {
+        print("inside try");
+        final Response response_data = await Dio().post(url, data: requestBody);
+
+/*           request.headers['Connection'] = 'Keep-Alive';
+          request.headers['Keep-Alive'] = 'timeout=20, max=1000';
+          request.headers['Content-Type'] = 'application/json';
+          request.body = requestBody; */
+        //print(response_data.runtimeType);
+        print("I am in get notification");
+        print(response_data.data);
+        notification_count = 0;
+        if (response_data.statusCode == 200) {
+          //print(jsonDecode(response_data.data));
+          response_message = response_data.data;
+          for (var i = 0; i < response_message.length; i++) {
+            if (response_message[i]['read'] == false) {
+              notification_count += 1;
+            }
+          }
+          print("Noti Count" + notification_count.toString());
+
+          return response_message.toList();
+        }
+        //Map<String, dynamic> response_message = jsonDecode(response.body);
+      } catch (e) {
+        print('Error occurred: $e');
+      }
+      retries--;
+      if (retries > 0) {
+        print('Retrying after $delayInSeconds seconds');
+        await Future.delayed(Duration(seconds: delayInSeconds));
+        delayInSeconds *= 1;
+      }
+    }
+
+    //throw http.ClientException('Failed to send request after 3 retrials');
+  }
+
+  return response_message.toList();
+}
 
 get_branch_name() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -30,7 +93,7 @@ get_branch_name() async {
 }
 
 class mainhome extends StatefulWidget {
-  const mainhome({Key? key}) : super(key: key);
+  mainhome({Key? key}) : super(key: key);
 
   @override
   _mainhomeState createState() => _mainhomeState();
@@ -43,10 +106,20 @@ class _mainhomeState extends State<mainhome> {
     history(),
     notification(),
   ];
+
+  //int currentIndex = 0;
   int currentIndex = 0;
-  void onTap(int index) {
+
+  void callback(int indexo) {
     setState(() {
-      currentIndex = index;
+      currentIndex = indexo;
+    });
+  }
+
+  void reload_notifications() {
+    get_notification();
+    setState(() {
+      notification_count = notification_count;
     });
   }
 
@@ -69,12 +142,14 @@ class _mainhomeState extends State<mainhome> {
   @override
   void initState() {
     super.initState();
+
     _query().then((dataList) {
       setState(() {
         _dataList = dataList;
       });
     });
     get_branch_name();
+    reload_notifications();
     setState(() {
       branch_name = branch_name;
     });
@@ -85,14 +160,16 @@ class _mainhomeState extends State<mainhome> {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           centerTitle: true,
-          flexibleSpace: ClipRect(
-              child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-            child: Container(
-              color: Colors.transparent,
-            ),
-          )),
-          backgroundColor: Colors.green[700],
+          toolbarHeight: 80,
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                color: Colors.indigo,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                )),
+          ),
+          backgroundColor: Colors.transparent,
           elevation: 0,
         ),
         drawer: Drawer(
@@ -231,14 +308,13 @@ class _mainhomeState extends State<mainhome> {
                                 });
                           },
                         ),
-                        menuItem(1, "Settings", Icons.settings),
+                        /* menuItem(1, "Settings", Icons.settings), */
                         GestureDetector(
                           child: menuItem(2, "Logout", Icons.logout),
                           onTap: () => {
                             setState(() {
-                              print("i am here");
                               Logout();
-                              print("i am there");
+
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => LoginPage()));
                             })
@@ -252,38 +328,77 @@ class _mainhomeState extends State<mainhome> {
             ),
           ),
         ),
-        body: pages[currentIndex],
+        body: SingleChildScrollView(
+            child: Container(
+          height: 740,
+          child: Stack(
+            children: [pages[currentIndex]],
+          ),
+        )),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.black,
+          selectedLabelStyle: TextStyle(fontFamily: 'Dongle', fontSize: 18),
+          unselectedLabelStyle: TextStyle(fontFamily: 'Dongle', fontSize: 18),
           type: BottomNavigationBarType.shifting,
-          onTap: onTap,
+          onTap: callback,
+          key: GlobalKey(),
+          enableFeedback: true,
           currentIndex: currentIndex,
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.grey.withOpacity(0.5),
           showSelectedLabels: true,
           showUnselectedLabels: true,
-          elevation: 0,
+          //elevation: 0,
           items: [
             BottomNavigationBarItem(label: "Booking", icon: Icon(Icons.home)),
             BottomNavigationBarItem(
-                label: "upcoming", icon: Icon(Icons.skip_next)),
+              label: "upcoming",
+              icon: Icon(Icons.skip_next),
+            ),
             BottomNavigationBarItem(
                 label: "history", icon: Icon(Icons.history)),
             BottomNavigationBarItem(
-                label: "Notifications", icon: Icon(Icons.notifications)),
+                label: "Notifications",
+                icon: Container(
+                  height: 25,
+                  width: 35,
+                  child: Stack(
+                    children: [
+                      Icon(Icons.notifications_active),
+                      FutureBuilder(
+                          future: get_notification_count(),
+                          builder: (context, snapshort) {
+                            if (notification_count > 0) {
+                              return Align(
+                                alignment: Alignment.topRight,
+                                child: Container(
+                                  width: 20,
+                                  height: 20,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.red),
+                                  child: Center(
+                                      child: Text(
+                                    notification_count.toString(),
+                                    style: TextStyle(
+                                        fontSize: 15, color: Colors.white),
+                                  )),
+                                ),
+                              );
+                            } else {
+                              return Text("");
+                            }
+                          })
+                    ],
+                  ),
+                )),
           ],
         ));
   }
 
   void Logout() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    prefs.setString('client_name', '');
-    prefs.setString('mobile', '');
-    prefs.setString('email', '');
-    prefs.setString('branch_name', '');
-
-    print("i am here");
+    DatabaseHelper db = DatabaseHelper();
+    await db.update_logout_user();
   }
 }
 

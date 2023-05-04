@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:second_project/notification.dart';
+import 'package:second_project/upcoming.dart';
 import 'function.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -14,6 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'login.dart';
 import 'dart:io';
+import 'mainhomepage.dart';
 
 String? client_name;
 String? client_mobile;
@@ -21,6 +24,8 @@ String? client_email;
 String? branch_name;
 
 String branchname_str = '';
+
+DateTime initDate = DateTime.now();
 
 get_branch_name() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -160,7 +165,7 @@ class _BookingState extends State<Booking> {
 
   void initState() {
     super.initState();
-
+    get_notification();
     this.duration.add({"duration_id": 60, "duration": "60 Min"});
     this.duration.add({"duration_id": 90, "duration": "90 Min"});
     this.duration.add({"duration_id": 120, "duration": "120 Min"});
@@ -290,8 +295,8 @@ class _BookingState extends State<Booking> {
                       children: <Widget>[
                         DatePicker(
                           DateTime.now(),
-                          initialSelectedDate: DateTime.now(),
-                          selectionColor: Colors.black,
+                          initialSelectedDate: initDate,
+                          selectionColor: Colors.green,
                           selectedTextColor: Colors.white,
                           onDateChange: (date) {
                             // New date selected
@@ -684,6 +689,17 @@ class _BookingState extends State<Booking> {
               isloading = false;
             });
             Navigator.pop(context);
+            Navigator.pushNamed(context, '/mainhomepage');
+            setState(() {
+              DateFormat date_start_format0 = DateFormat('yyyy-MM-dd');
+
+              DateTime datoo = date_start_format0.parse(new_booking_date);
+              initDate = datoo;
+              setState(() {
+                new_booking_date = DateFormat('yyyy-MM-dd').format(initDate);
+                print("The Selected Date is $new_booking_date");
+              });
+            });
             Alert(
               context: context,
               type: AlertType.success,

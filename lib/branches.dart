@@ -12,8 +12,11 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'db.dart';
 import 'booking.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 
 int? branch_id_number;
+String client_name = '';
 
 save_branch(String branch_name, int branch_id) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -53,57 +56,51 @@ class _MyListViewState extends State<MyListView> {
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration.zero, () async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      client_name = prefs.getString('client_name').toString();
+      final snackBar = SnackBar(
+        /// need to set following properties for best effect of awesome_snackbar_content
+        elevation: 0,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.transparent,
+        content: AwesomeSnackbarContent(
+          title: 'Welcome Back !',
+          message: 'Hello Mr $client_name',
+
+          /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
+          contentType: ContentType.success,
+        ),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    });
+
     return Scaffold(
         extendBodyBehindAppBar: true,
+        extendBody: true,
         appBar: AppBar(
-          centerTitle: true,
-          leading: IconButton(
-            icon: Container(
-              width: 30,
-              child: Icon(Icons.arrow_back,
-                  size: 30, color: Colors.red, grade: 100),
-              color: Colors.transparent,
-            ),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          title: Container(
-              width: 200,
-              height: 25,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: Colors.transparent,
-              ),
-              child: Text(
-                textAlign: TextAlign.center,
-                "BRANCHES",
-                style: TextStyle(
-                    color: Colors.blue.shade900,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              )),
-          backgroundColor: Colors.green.withAlpha(200),
-          flexibleSpace: ClipRect(
-              child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-            child: Container(
-              color: Colors.transparent,
-            ),
-          )),
+          toolbarHeight: 100,
+          brightness: Brightness.dark,
+          backgroundColor: Colors.transparent,
           elevation: 0,
-          actions: [
-            Container(
-              alignment: Alignment.center,
-              color: Colors.transparent,
-              child: IconButton(
-                icon: Icon(
-                  Icons.refresh,
-                  size: 28,
-                ),
-                color: Colors.green[900],
-                onPressed: _getDataFromApi,
-              ),
-            )
-          ],
+          title: Text(
+            'Branches',
+            style: TextStyle(
+                fontFamily: 'Dongle',
+                fontSize: 40,
+                fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true,
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30)),
+                gradient: LinearGradient(
+                    colors: [Colors.indigo, Colors.black],
+                    begin: Alignment.center,
+                    end: Alignment.topCenter)),
+          ),
         ),
         body: _dataList == null
             ? Container(

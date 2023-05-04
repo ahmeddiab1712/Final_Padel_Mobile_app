@@ -24,7 +24,7 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
       height: 300,
       padding: EdgeInsets.only(top: 30.0),
       decoration: BoxDecoration(
-          color: Colors.green[700],
+          color: Colors.indigo,
           borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(25),
               bottomLeft: Radius.circular(25))),
