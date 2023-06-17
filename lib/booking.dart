@@ -2,12 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:second_project/notification.dart';
 import 'package:second_project/upcoming.dart';
-import 'function.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:snippet_coder_utils/FormHelper.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
-import 'app_buttons.dart';
 import 'db.dart';
 import 'package:intl/intl.dart';
 import 'package:dio/dio.dart';
@@ -15,8 +13,6 @@ import 'package:slide_to_act/slide_to_act.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'login.dart';
-import 'dart:io';
-import 'mainhomepage.dart';
 
 String? client_name;
 String? client_mobile;
@@ -174,6 +170,10 @@ class _BookingState extends State<Booking> {
     this.court_type.add({"id": "Single", "label": "Single"});
 
     //get_appointment_times();
+  }
+
+  Future refesh() async {
+    get_appointment_times();
   }
 
   @override

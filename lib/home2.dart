@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'welcome.dart'; // Import the main page
+// Import the main page
 
 class MainPage2 extends StatelessWidget {
   @override

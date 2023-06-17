@@ -2,16 +2,13 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'function.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'db.dart';
-import 'booking.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 
@@ -80,7 +77,7 @@ class _MyListViewState extends State<MyListView> {
         extendBody: true,
         appBar: AppBar(
           toolbarHeight: 100,
-          brightness: Brightness.dark,
+          //brightness: Brightness.dark,
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Text(
@@ -111,26 +108,39 @@ class _MyListViewState extends State<MyListView> {
                   itemCount: _dataList.length,
                   itemBuilder: (context, index) {
                     return Card(
-                      margin: EdgeInsets.all(20),
-                      shadowColor: Colors.black,
-                      color: Colors.white.withAlpha(200),
+                      margin: EdgeInsets.only(
+                          left: 40, right: 40, top: 15, bottom: 15),
+                      shadowColor: Colors.blue,
+                      color: Color.fromARGB(255, 82, 85, 70),
                       child: ListTile(
                         title: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset(
-                              "assets/images/padel_branch.jpg", // replace with your image asset path
-                              height: 150,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
+                            SizedBox(
+                              height: 10,
                             ),
+                            Container(
+                              height: 180,
+                              width: 650,
+                              child: Image.asset(
+                                "assets/images/dose_logo.png", // replace with your image asset path
+                                height: 180,
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            )
                           ],
                         ),
                         subtitle: Text(
                           _dataList[index]['branch_name'],
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontFamily: 'Dongle'),
                         ),
                         onTap: () async {
                           DatabaseHelper db = DatabaseHelper();

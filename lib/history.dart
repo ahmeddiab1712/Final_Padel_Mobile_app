@@ -1,12 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'function.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:snippet_coder_utils/FormHelper.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
-import 'app_buttons.dart';
-import 'db.dart';
 import 'package:intl/intl.dart';
 import 'package:dio/dio.dart';
 import 'package:slide_to_act/slide_to_act.dart';

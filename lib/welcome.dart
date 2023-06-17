@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'db.dart';
 
 class WelcomePage extends StatefulWidget {
   @override
@@ -14,7 +13,7 @@ class _WelcomePageState extends State<WelcomePage> {
 
     // Navigate to the main page after 3 seconds
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, '/loginPage');
+      Navigator.pushReplacementNamed(context, '/moamen_test');
     });
   }
 

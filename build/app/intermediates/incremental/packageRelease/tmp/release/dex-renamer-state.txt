@@ -1,4 +1,0 @@
-#Wed May 03 06:44:08 EET 2023
-base.0=D\:\\Flutter\\second_project\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex

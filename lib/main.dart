@@ -6,13 +6,13 @@ import 'package:second_project/upcoming.dart';
 import 'welcome.dart';
 import 'home.dart';
 import 'home2.dart';
+import 'moamen_test.dart';
 
 import 'login.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'branches.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
-import 'db.dart';
 import 'booking.dart';
 
 void main() => runApp(MyApp());
@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => WelcomePage(),
         '/main': (context) => MainPage(),
+        '/moamen_test': (context) => Moamen_test(),
         '/main2': (context) => MainPage2(),
         '/loginPage': (context) => LoginPage(),
         '/branches': (context) => MyListView(),
