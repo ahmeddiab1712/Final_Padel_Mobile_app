@@ -39,7 +39,7 @@ class _MyListViewState extends State<MyListView> {
   Future<void> _getDataFromApi() async {
     // Call the API and parse the response
     final response = await http.post(
-        Uri.parse('http://35.223.125.10:4002/get_branches'),
+        Uri.parse('http://34.170.125.186:4002/get_branches'),
         body: json.encode({'code': 'ahmeddiab_D1NyzZTAoPbMhZ30'}));
     final jsonData = jsonDecode(response.body);
 

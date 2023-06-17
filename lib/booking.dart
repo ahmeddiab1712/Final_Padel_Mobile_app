@@ -43,7 +43,7 @@ Future<List> get_appointment_times() async {
   print(
       "duration value is $duration_value || court_type value is $court_type_value || booking_date is $new_booking_date ");
 
-  String url = 'http://35.223.125.10:4002/get_appointment_time';
+  String url = 'http://34.170.125.186:4002/get_appointment_time';
 
   var requestBody = json.encode({
     'booking_date': new_booking_date,
@@ -637,7 +637,7 @@ class _BookingState extends State<Booking> {
 
     client_mobile = prefs.getString('mobile');
     branch_name = prefs.getString('branch_name');
-    String url1 = 'http://35.223.125.10:4002/add_time_slot?add_time_slot';
+    String url1 = 'http://34.170.125.186:4002/add_time_slot?add_time_slot';
 
     var requestBody = json.encode({
       'court_name': court_name,

@@ -31,7 +31,7 @@ Future<List> get_notification_count() async {
 
   mobile = prefs.getString('mobile').toString();
 
-  String url = 'http://35.223.125.10:4002/get_notifications';
+  String url = 'http://34.170.125.186:4002/get_notifications';
 
   var requestBody = json.encode({
     'mobile': mobile,

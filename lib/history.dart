@@ -26,7 +26,7 @@ Future<List> get_histroy_booking() async {
   client_email = prefs.getString('email');
   branch_name = prefs.getString('branch_name');
 
-  String url = 'http://35.223.125.10:4002/get_history_booking';
+  String url = 'http://34.170.125.186:4002/get_history_booking';
 
   print(response_message);
 

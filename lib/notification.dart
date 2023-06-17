@@ -26,7 +26,7 @@ Future<List> get_notification() async {
   client_email = prefs.getString('email');
   branch_name = prefs.getString('branch_name');
 
-  String url = 'http://35.223.125.10:4002/get_notifications';
+  String url = 'http://34.170.125.186:4002/get_notifications';
 
   print(response_message);
 
@@ -83,7 +83,7 @@ Future<List> read_notification() async {
 
   mobile = prefs.getString('mobile').toString();
 
-  String url = 'http://35.223.125.10:4002/read_notifications';
+  String url = 'http://34.170.125.186:4002/read_notifications';
 
   var requestBody = json.encode({
     'mobile': mobile,

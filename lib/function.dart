@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 
-final String url = 'http://35.223.125.10:4002/login';
+final String url = 'http://34.170.125.186:4002/login';
 
 save_session(String mobile, String email, String client_name) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -272,7 +272,7 @@ Future<void> sendDataToServer(
 Future<void> sign_up(BuildContext context, String mobile, String email,
     String client_name) async {
   try {
-    String sign_up_url = "http://35.223.125.10:4002/sign_up";
+    String sign_up_url = "http://34.170.125.186:4002/sign_up";
     final response = await http.post(Uri.parse(sign_up_url),
         body: json.encode({
           'client_mobile': mobile,
